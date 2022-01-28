@@ -247,7 +247,7 @@ $(document).ready(function(){
 				
 				let profit = round_2_digits(clientPrice - totalCost);
 				
-				$("#clientPrice").text("$ " + numberWithCommas(clientPrice));
+				$("#clientPrice").text("$ " + numberWithCommas(round_2_digits(clientPrice)));
 				
 				let currentDate = new Date().toLocaleString();
 				
