@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pricing Calculator</title>
+	 <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/print.min.css" rel="stylesheet">
+    <!-- Main CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	</style>
+
+</head>
+<body>
+
+	<div class="container clearboth">
+		<div class="row price_container top_section">
+			<div class="col-md-4">
+				<img src="images/logo.png" alt="logo" id="logo" class=""/>
+			</div>
+			<div class="col-md-8">
+				<h1 class="text-left" class="">Pricing Calculator</h1>
+			</div>
+		</div>
+		
+		<div class="row price_container">
+
+			<form id="priceCalcForm">
+			
+				<div class="row input_field">
+					<div class="col-md-6">
+						<label>
+							Name
+						</label>
+						<div class="">
+							<input type="text" id="main_name" class="number_req form-control main_name" name ="main_name" value=""/>
+						</div>	
+					</div>
+					<div class="col-md-6">
+						<label>
+							Project Name
+						</label>
+						<div class="">
+							<input type="text" id="project_name" class="number_req form-control project_name" name ="project_name" value=""/>
+						</div>	
+					</div>
+				</div>
+				
+				<div class="row input_field">
+				
+					<div class="select_field col-md-12 main_units">
+						<label>
+							Vendor
+						</label>
+						<select id="main_unit" name ="main_unit" required="required">
+							<option name="" value="">Please Select Vendor</option>
+							<!--<option name="" value="0.22" data-upcharge="100" data-surcharge=""> Adornus </option>-->
+							<option name="Bernier" value="0.48" data-upcharge="100" data-surcharge=""> Bernier Cabinet </option>
+							<option name="CNC" value="0.25" data-upcharge="100" data-surcharge="10" > CNC Cabinetry </option>
+							<option name="CNG" value="0.35" data-upcharge="100" data-surcharge=""> CNG Cabinets </option>
+							<option name="cubitac" value="0.28" data-upcharge="100" data-surcharge="7.0"> Cubitac Cabinet </option>
+							<option name="DC" value="0.371" data-upcharge="100" data-surcharge="10"> DC Cabinetry </option>
+							<option name="Executive" value="0.407" data-upcharge="100" data-surcharge="10"> Executive Cabinets </option>
+							<option name="Fabuwood" value="0.349" data-upcharge="100" data-surcharge="7.0"> Fabuwood </option>
+							<option name="Golden" value="0.40" data-upcharge="100" data-surcharge=""> Golden Home </option>														
+							<option name="HansKrug" value="1.0" data-upcharge="100" data-surcharge=""> Hans Krug </option>
+						</select>
+					</div>
+				</div>
+				
+				<div id="list_prices">
+					<div class="row input_field price_fields">
+						<div class="col-md-5">
+							<label>
+								Group A
+							</label>
+							<div class="input_field_n_dollar">
+								<input type="text" id="description_1" class="number_req form-control description" name ="description_1" value="Cabinets"/>
+							</div>	
+						</div>
+						<div class="col-md-3">
+							<label>
+								List Price<span class="red"> * </span>
+							</label>
+							<div class="input_field_n_dollar">
+								<span class="dollar_sign"> $ </span>
+								<input type="text" id="list_price_1" class="number_req form-control list_price" name ="list_price_1" value="" required="required"/>
+							</div>	
+						</div>
+						<div class="col-md-3 modification">
+							<label>
+								Modification
+							</label>
+							<div class="input_field_n_dollar">
+								<span class="dollar_sign"> $ </span>
+								<input type="text" id="list_price_m1" class="number_req form-control list_price_m" name ="list_price_m1" value=""/>
+							</div>	
+						</div>
+						<div class="col-md-1"><label>&nbsp;</label><button type="button" class="plus"> + </button></div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="row input_field">
+					<div class="col-md-6">
+						<label>
+							Shipping
+						</label>
+						<div class="input_field_n_dollar">
+							<span class="dollar_sign"> $ </span>
+							<input type="text" id="shipping" class="number_req form-control" name ="shipping" value=""/>
+						</div>	
+					</div>
+					
+					<div class="select_field col-md-6 main_units">
+						<label>
+							Client Scale
+						</label>
+						<select id="discount" name ="discount">
+							<option name="" value="0">0</option>
+							<option name="" value="5"> 1 </option>
+							<option name="" value="10"> 2 </option>
+							<option name="" value="15"> 3 </option>
+							<option name="" value="20"> 4 </option>
+							<option name="" value="25"> 5 </option>
+						</select>								
+					</div>
+				
+				</div>
+				
+				<div class="row input_field text-right">
+					
+					
+					<div class="col-md-6">
+						<div class="">
+							<input type="submit" id="price_calc_btn" type="button" class="btn btn-primary" value="Calculate">
+						</div>
+					</div>
+				</div>
+			
+			</form>	
+			<table class="table table-bordered" id="resultsTable">
+					<tr class="retail">
+						<td scope="row" class="thead-dark text-center">Total Retail Price</td>
+						<td id="clientPrice" class="text-center"> - </td>
+					</tr>
+					<br/>
+					<tr >
+						<td colspan="2"><input type="button" id="cmd" type="button" class="btn btn-primary" value="Print"></td>
+					</tr>
+					
+					
+			</table>	
+		</div>
+	</div>
+	
+	
+	<div id="editor">
+	
+		<style> 
+			#editor{
+				padding:20px;
+				max-width:600px;
+				margin:10px auto 20px;
+			}
+			#logo_print{
+				max-width:60px;
+				display:inline-block;
+				margin-top: 20px;
+			}
+			#serial_num{
+				font-size:16px;
+				vertical-align:middle;
+				display:inline-block;
+				padding-top:20px;
+			}
+			#editor h2{
+				text-align:center;
+				font-size:24px;
+				border-top:2px solid #000;
+				border-bottom:2px solid #000;
+				padding:10px 0;
+				margin:10px 0;
+			}
+			#editor ul li{
+				padding:12px 10px;
+				font-size:16px;
+			}
+			#editor .text-bold{
+				font-weight:bold;
+			}
+			#editor .text-center{
+				text-align:center;
+			}
+			#editor .text-right{
+				text-align:right;
+			}
+			#editor .text-left{
+				text-align:left;
+			}
+			#editor table {  
+				font-family: arial, sans-serif;  
+				border-collapse: collapse;  
+				width: 100%;  
+				border:2px solid #000;
+				margin:10px 10px;
+			}  
+	  
+			#editor td, #editor th {  
+				border: 1px solid #dddddd;  
+				text-align: left;  
+				padding: 12px;  
+				font-size:16px;
+				vertical-align:middle;
+			}  
+			#editor .img_td, #editor .img_td td{
+				border:0;
+			}
+			.thead-dark{
+				color:#000;
+				font-size:24px;
+				font-weight:bold;
+				text-align:center;
+			}
+			.table_print_pdf{
+				margin:15px 10px;
+				border: 1px solid #dddddd;
+			}
+		</style> 
+		
+			
+		<!-- don't delete this -->
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/print.min.js"></script>
+	<script src="js/jquery_validate.js"></script>		
+	<script src="js/calc_main.js"></script>
+	 	 
+	<script>
+		$(document).ready(function(){
+			$('#cmd').click(function () {   
+				printJS('editor', 'html');								
+			});				 
+		});	
+	 </script>
+	 
+	
+
+</body>
+</html>
