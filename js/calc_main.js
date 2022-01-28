@@ -187,6 +187,7 @@ $(document).ready(function(){
 				$('.list_price').each(function () {
 					
 					modificationprice = Number ( jQuery('.list_price_m ').eq(cnt1).val() );
+					modificationprice = modificationprice + modificationprice * upCharge
 					modificationtotalPrice += modificationprice;
 					
 					price = Number( $(this).val() );
