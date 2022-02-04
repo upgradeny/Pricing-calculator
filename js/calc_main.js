@@ -209,7 +209,7 @@ $(document).ready(function(){
 					
 					print_cost_table_sub +=  '<tr>' + 
 												'<td>' + $(this).parent().parent().parent().find('.description').val() + ' </td>' +
-												'<td> $' + numberWithCommas( round_2_digits( price + (price * upCharge) - (( price + (price * upCharge)) * discount) + shipping_part + modificationtotalPrice_retail ) ) + ' </td>' +
+												'<td> $' + numberWithCommas( round_2_digits( price + (price * upCharge) - (( price + (price * upCharge)) * discount) + shipping_part + modificationprice_retail ) ) + ' </td>' +
 												'<td> $' + numberWithCommas( Number( $(this).val() ) ) + ' </td>' +
 												'<td> $' + numberWithCommas( round_2_digits(price + shipping_part + modificationprice) ) + ' </td>' +
 											'</tr>';
