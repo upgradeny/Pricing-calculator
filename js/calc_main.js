@@ -184,11 +184,16 @@ $(document).ready(function(){
 				let cnt1 = 0;
 				let modificationtotalPrice = 0;
 				
+				let modificationprice_retail = 0;
+				let modificationtotalPrice_retail = 0;
+				
 				$('.list_price').each(function () {
 					
 					modificationprice = Number ( jQuery('.list_price_m ').eq(cnt1).val() );
-					modificationprice = modificationprice + modificationprice * upCharge
 					modificationtotalPrice += modificationprice;
+					
+					modificationprice_retail = modificationprice + modificationprice * upCharge;
+					modificationtotalPrice_retail += modificationprice_retail;
 					
 					price = Number( $(this).val() );
 					listprice = listprice + price;
@@ -204,7 +209,7 @@ $(document).ready(function(){
 					
 					print_cost_table_sub +=  '<tr>' + 
 												'<td>' + $(this).parent().parent().parent().find('.description').val() + ' </td>' +
-												'<td> $' + numberWithCommas( round_2_digits( price + (price * upCharge) - (( price + (price * upCharge)) * discount) + shipping_part + modificationprice ) ) + ' </td>' +
+												'<td> $' + numberWithCommas( round_2_digits( price + (price * upCharge) - (( price + (price * upCharge)) * discount) + shipping_part + modificationtotalPrice_retail ) ) + ' </td>' +
 												'<td> $' + numberWithCommas( Number( $(this).val() ) ) + ' </td>' +
 												'<td> $' + numberWithCommas( round_2_digits(price + shipping_part + modificationprice) ) + ' </td>' +
 											'</tr>';
@@ -230,7 +235,7 @@ $(document).ready(function(){
 				print_input_data += '</table><div class="br_line"><br/></div>';
 				
 				totalCost = totalCost + Number(shipping) + Number ( modificationtotalPrice ); // + Number(surcharge);
-				clientPrice = clientPrice + Number(shipping) + Number ( modificationtotalPrice ); // + Number(surcharge);
+				clientPrice = clientPrice + Number(shipping) + Number ( modificationtotalPrice_retail ); // + Number(surcharge);
 				
 				
 				print_cost_table += '<tr>' + 
